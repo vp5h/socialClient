@@ -1,0 +1,28 @@
+.homeContainer {
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .homeContainer {
+    display: grid;
+    max-width: 400px;
+  }
+
+  .feed {
+    max-width: 405px;
+    margin-top: 10px;
+  }
+  .sidebar {
+    height: auto;
+  }
+  .sidebarFriendList {
+    display: none;
+  }
+  .sidebarWrapper {
+    display: none;
+  }
+
+  .shareWrapper {
+    padding: 2px;
+  }
+}
