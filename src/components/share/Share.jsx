@@ -1,5 +1,11 @@
 import './share.css';
-import { PermMedia, Label, Room, EmojiEmotions,  Cancel } from '@material-ui/icons';
+import {
+  PermMedia,
+  Label,
+  Room,
+  EmojiEmotions,
+  Cancel,
+} from '@material-ui/icons';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
@@ -11,6 +17,7 @@ export default function Share() {
   const [file, setFile] = useState(null);
 
   const submitHandler = async (e) => {
+    let imgurl;
     e.preventDefault();
     const newPost = {
       userId: user._id,
@@ -19,35 +26,51 @@ export default function Share() {
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
+      data.append('upload_preset', process.env.REACT_APP_CLOUD_UPDATE_PRESET);
+      data.append('cloud_name', process.env.REACT_APP_CLOUD_NAME);
       data.append('name', fileName);
       data.append('file', file);
-      newPost.img = fileName;
-      console.log(newPost);
+      console.log(process.env.REACT_APP_CLOUD_API);
+
       try {
-        await axios.post('/upload', data);
+        const res = await axios.post(process.env.REACT_APP_CLOUD_API, data);
+        console.log(res);
+        imgurl = String(res.data.url);
+
+        newPost.img = imgurl;
+        await axios.post('/posts', newPost);
+
+        window.location.reload();
       } catch (err) {}
+    } else {
+      try {
+        if (newPost.desc.trim().length !== 0) {
+          newPost.img = imgurl;
+          await axios.post('/posts', newPost);
+
+          window.location.reload();
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
-    try {
-      await axios.post('/posts', newPost);
-      window.location.reload();
-    } catch (err) {}
   };
 
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-        <img
+          <img
             className="shareProfileImg"
             src={
               user.profilePicture
                 ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
+                : PF + 'person/noAvatar.png'
             }
             alt=""
           />
           <input
-            placeholder={"What's in your mind " + user.username + "?"}
+            placeholder={"What's in your mind " + user.username + '?'}
             className="shareInput"
             ref={desc}
           />

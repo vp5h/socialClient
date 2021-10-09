@@ -5,7 +5,6 @@ import { Add, Remove } from '@material-ui/icons';
 import './rightbar.css';
 import Online from '../online/Online';
 import { AuthContext } from '../../context/AuthContext';
-import { Users } from '../../dummydata';
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -54,12 +53,24 @@ export default function Rightbar({ user }) {
           </span>
         </div>
         <img className="rightbarAd" src="assets/ad.png" alt="" />
-        <h4 className="rightbarTitle">Online Friends</h4>
-        <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <Online key={u.id} user={u} />
+        {/* <h4 className="rightbarTitle">People You follow</h4> */}
+        {/* <ul className="rightbarFriendList">
+          {friends.map((user) => (
+          
+            <li className="rightbarFriend">
+            <div className="rightbarProfileImgContainer">
+              <img className="rightbarProfileImg"  src={
+                    user.profilePicture
+                      ? PF + user.profilePicture
+                      : PF + 'person/noAvatar.png'
+                  } alt="" />
+              <span className="rightbarOnline"></span>
+            </div>
+            <span className="rightbarUsername">{user.username}</span>
+          </li>
           ))}
-        </ul>
+          {console.log(friends)}
+        </ul> */}
       </>
     );
   };
@@ -88,7 +99,7 @@ export default function Rightbar({ user }) {
             <span className="rightbarInfoValue">
               {user.relationship === 1
                 ? 'Single'
-                : user.relationship === 1
+                : user.relationship === 2
                 ? 'Married'
                 : '-'}
             </span>
@@ -101,7 +112,7 @@ export default function Rightbar({ user }) {
               to={'/profile/' + friend.username}
               style={{ textDecoration: 'none' }}
             >
-              <div className="rightbarFollowing">
+              <div key={friend.username} className="rightbarFollowing">
                 <img
                   src={
                     friend.profilePicture

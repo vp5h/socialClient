@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './sidebar.css';
-import { Users } from '../../dummydata';
+
 import axios from 'axios';
 import CloseFriend from '../closeFriend/CloseFriend';
 
@@ -22,11 +22,11 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
+      <ul className="sidebarFriendList">
       <hr className="sidebarHr" />
       <h4 className="rightbarTitle">People on Social</h4>
-      <ul className="sidebarFriendList">
         {people.map((u) => (
-          <CloseFriend key={u.id} user={u} />
+          <CloseFriend key={u._id} user={u} />
         ))}
       </ul>
     </div>

@@ -27,10 +27,20 @@ const Topbar = () => {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
+          <Link
+            style={{ textDecoration: 'none', color: 'white', padding: '10px' }}
+            to="/"
+          >
+            <span className="topbarLink">Homepage</span>
+          </Link>
+          <Link
+            to={`/profile/${user.username}`}
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            <span className="topbarLink">Timeline</span>
+          </Link>
         </div>
-        <div className="topbarIcons">
+        {/* <div className="topbarIcons">
           <div className="topbarIconItem">
             <Person />
             <span className="tobparIconBadge">1</span>
@@ -43,9 +53,9 @@ const Topbar = () => {
             <Notifications />
             <span className="tobparIconBadge">1</span>
           </div>
-        </div>
+        </div> */}
       </div>
-      <Link to={`/profile/${user.username}`}>
+      <Link style={{ marginRight: '15px' }} to={`/profile/${user.username}`}>
         <img
           src={
             user.profilePicture

@@ -21,6 +21,14 @@
   .sidebarWrapper {
     display: none;
   }
+  .topbarCenter{
+    flex: 12
+  }
+  .topbarLeft{
+    flex: 6
+  }
+  
+  
 
   .shareWrapper {
     padding: 2px;
