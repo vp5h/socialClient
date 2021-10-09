@@ -32,7 +32,7 @@ export default function Profile() {
                 src={
                   user.coverPicture
                     ? PF + user.coverPicture
-                    : PF + 'person/noCover.png'
+                    : "https://res.cloudinary.com/social-media-appwe/image/upload/v1633782265/social/assets/person/noCover_mfhnml.png"
                 }
                 alt=""
               />
@@ -41,7 +41,7 @@ export default function Profile() {
                 src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + 'person/noAvatar.png'
+                    : "https://res.cloudinary.com/social-media-appwe/image/upload/v1633782265/social/assets/person/noAvatar_f5amkd.png"
                 }
                 alt=""
               />

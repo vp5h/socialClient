@@ -71,7 +71,7 @@ const Topbar = () => {
           src={
             user.profilePicture
               ? PF + user.profilePicture
-              : PF + 'person/noAvatar.png'
+              : "https://res.cloudinary.com/social-media-appwe/image/upload/v1633782265/social/assets/person/noAvatar_f5amkd.png"
           }
           alt=""
           className="topbarImg"

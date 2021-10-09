@@ -43,7 +43,7 @@ export default function Post({ post }) {
                 src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + 'person/noAvatar.png'
+                    : "https://res.cloudinary.com/social-media-appwe/image/upload/v1633782265/social/assets/person/noAvatar_f5amkd.png"
                 }
                 alt=""
               />
@@ -63,13 +63,13 @@ export default function Post({ post }) {
           <div className="postBottomLeft">
             <img
               className="likeIcon"
-              src={`${PF}like.png`}
+              src="https://res.cloudinary.com/social-media-appwe/image/upload/v1633782263/social/assets/like_kw61xh.png"
               onClick={likeHandler}
               alt=""
             />
             <img
               className="likeIcon"
-              src={`${PF}heart.png`}
+              src="https://res.cloudinary.com/social-media-appwe/image/upload/v1633782263/social/assets/heart_kwqy2l.png"
               onClick={likeHandler}
               alt=""
             />
