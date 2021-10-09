@@ -27,38 +27,46 @@ export default function Login() {
           </span>
         </div>
         <div className="loginRight">
-          <form className="loginBox" onSubmit={handleClick}>
-            <input
-              placeholder="Email"
-              type="email"
-              required
-              className="loginInput"
-              ref={email}
-            />
-            <input
-              placeholder="Password"
-              type="password"
-              required
-              minLength="6"
-              className="loginInput"
-              ref={password}
-            />
-            <button className="loginButton" type="submit" disabled={isFetching}>
-              {isFetching ? (
-                <CircularProgress color="white" size="20px" />
-              ) : (
-                'Log In'
-              )}
-            </button>
-            <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              {isFetching ? (
-                <CircularProgress color="white" size="20px" />
-              ) : (
-                'Create a New Account'
-              )}
-            </button>
-          </form>
+          <div className="loginBox">
+            <form className="loginBox" onSubmit={handleClick}>
+              <input
+                placeholder="Email"
+                type="email"
+                value="Janesss@gamil.com"
+                required
+                className="loginInput"
+                ref={email}
+              />
+              <input
+                placeholder="Password"
+                type="password"
+                value="123456"
+                required
+                minLength="6"
+                className="loginInput"
+                ref={password}
+              />
+              <button
+                className="loginButton"
+                type="submit"
+                disabled={isFetching}
+              >
+                {isFetching ? (
+                  <CircularProgress color="white" size="20px" />
+                ) : (
+                  'Log In'
+                )}
+              </button>
+              <span className="loginForgot">Forgot Password?</span>
+            </form>
+              <button className="loginRegisterButton">
+                {isFetching ? (
+                  <CircularProgress color="white" size="20px" />
+                ) : (
+                  <Link to="/" style={{textDecoration: 'none'}} className="loginRegisterButton">Create a New Account</Link>
+                )}
+              </button>
+          </div>
         </div>
       </div>
     </div>
