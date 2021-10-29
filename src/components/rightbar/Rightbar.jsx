@@ -10,9 +10,7 @@ export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(
-    currentUser.following.includes(user?._id)
-  );
+  const [followed, setFollowed] = useState();
 
   useEffect(() => {
     const getFriends = async () => {
@@ -23,7 +21,9 @@ export default function Rightbar({ user }) {
         console.log(err);
       }
     };
+    setFollowed(currentUser.following.includes(user?._id))
     getFriends();
+
   }, [user]);
 
   const handleClick = async () => {
