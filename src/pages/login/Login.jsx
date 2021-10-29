@@ -1,20 +1,19 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import './login.css';
 import { loginCall } from '../../apiCalls';
 import { AuthContext } from '../../context/AuthContext';
 import { CircularProgress } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 export default function Login() {
-  const email = useRef();
-  const password = useRef();
+  // const email = useRef("Janesss@gamil.com");
+  const [email, setEmail] = useState('Janesss@gmail.com');
+  const [password, setPassword] = useState('123456');
+  
   const { isFetching, dispatch } = useContext(AuthContext);
 
   const handleClick = (e) => {
     e.preventDefault();
-    loginCall(
-      { email: email.current.value, password: password.current.value },
-      dispatch
-    );
+    loginCall({ email: email, password: password }, dispatch);
   };
 
   return (
@@ -32,19 +31,19 @@ export default function Login() {
               <input
                 placeholder="Email"
                 type="email"
-                value="Janesss@gamil.com"
+                value={email}
                 required
                 className="loginInput"
-                ref={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 placeholder="Password"
                 type="password"
-                value="123456"
+                value={password}
                 required
                 minLength="6"
                 className="loginInput"
-                ref={password}
+               onChange={(e)=>setPassword(e.target.value)}
               />
               <button
                 className="loginButton"
@@ -57,15 +56,21 @@ export default function Login() {
                   'Log In'
                 )}
               </button>
-              <span className="loginForgot">Forgot Password?</span>
+              <span className="loginForgot"></span>
             </form>
-              <button className="loginRegisterButton">
-                {isFetching ? (
-                  <CircularProgress color="white" size="20px" />
-                ) : (
-                  <Link to="/" style={{textDecoration: 'none'}} className="loginRegisterButton">Create a New Account</Link>
-                )}
-              </button>
+            <button className="loginRegisterButton">
+              {isFetching ? (
+                <CircularProgress color="white" size="20px" />
+              ) : (
+                <Link
+                  to="/"
+                  style={{ textDecoration: 'none' }}
+                  className="loginRegisterButton"
+                >
+                  Create a New Account
+                </Link>
+              )}
+            </button>
           </div>
         </div>
       </div>

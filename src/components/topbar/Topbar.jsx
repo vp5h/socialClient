@@ -7,11 +7,13 @@ import {
   Notifications,
   ExitToApp,
 } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 const Topbar = () => {
+  const history = useHistory();
+
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
@@ -47,15 +49,19 @@ const Topbar = () => {
           </Link>
         </div>
         <div className="topbarIcons">
-          <div
-            className="topbarIconItem"
-            onClick={() => {
-              localStorage.clear();
-              window.location.reload();
-            }}
-          >
-            <ExitToApp />
-          </div>
+         
+          
+            <div
+              className="topbarIconItem"
+              onClick={() => {
+                localStorage.clear();
+                history.push("/")
+                window.location.reload();
+              }}
+            >
+              <ExitToApp />
+            </div>
+         
           {/* <div className="topbarIconItem">
             <Chat />
             <span className="tobparIconBadge">1</span>
@@ -71,7 +77,7 @@ const Topbar = () => {
           src={
             user.profilePicture
               ? user.profilePicture
-              : "https://res.cloudinary.com/social-media-appwe/image/upload/v1633782265/social/assets/person/noAvatar_f5amkd.png"
+              : 'https://res.cloudinary.com/social-media-appwe/image/upload/v1633782265/social/assets/person/noAvatar_f5amkd.png'
           }
           alt=""
           className="topbarImg"

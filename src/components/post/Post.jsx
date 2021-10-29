@@ -67,17 +67,10 @@ export default function Post({ post }) {
               onClick={likeHandler}
               alt=""
             />
-            <img
-              className="likeIcon"
-              src="https://res.cloudinary.com/social-media-appwe/image/upload/v1633782263/social/assets/heart_kwqy2l.png"
-              onClick={likeHandler}
-              alt=""
-            />
+           
             <span className="postLikeCounter">{like} people like it</span>
           </div>
-          <div className="postBottomRight">
-            <span className="postCommentText">{post.comment} comments</span>
-          </div>
+         
         </div>
       </div>
     </div>
