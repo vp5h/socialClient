@@ -10,12 +10,13 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
+import { useSearch } from '../../context/SearchContext';
 
 const Topbar = () => {
   const history = useHistory();
-
+  const { searchText, setSearchText } = useSearch();
   const { user } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+ 
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -30,6 +31,7 @@ const Topbar = () => {
             type="text"
             placeholder="Search for Friends, Post"
             className="SearchInput"
+            onChange={(e)=>setSearchText(e.target.value)}
           />
         </div>
       </div>

@@ -97,10 +97,16 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .topbarLinks {
+  /* .topbarLinks {
+    display: none;
+  } */
+  .searchbar {
     display: none;
   }
   .topbarContainer {
     width: 420px;
+  }
+  .topbarCenter {
+    display: none;
   }
 }
