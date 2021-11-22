@@ -29,7 +29,7 @@ const Topbar = () => {
           <Search className="searchIcon" />
           <input
             type="text"
-            placeholder="Search for Friends, Post"
+            placeholder="Search for Friends"
             className="SearchInput"
             onChange={(e)=>setSearchText(e.target.value)}
           />
